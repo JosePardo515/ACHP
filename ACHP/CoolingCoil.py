@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 from math import pi,log
-from ACHP.Correlations import f_h_1phase_Tube
-from ACHP.FinCorrelations import WavyLouveredFins,HerringboneFins, PlainFins, FinInputs
-from ACHP.DryWetSegment import DWSVals, DryWetSegment
+from Correlations import f_h_1phase_Tube
+from FinCorrelations import WavyLouveredFins,HerringboneFins, PlainFins, FinInputs
+from DryWetSegment import DWSVals, DryWetSegment
 import CoolProp as CP
 
 class CoolingCoilClass():

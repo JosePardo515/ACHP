@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import HAPropsSI 
 from math import sqrt,pi,tanh,exp,cos,log,sin
-from ACHP.ACHPTools import ValidateFields
+from ACHPTools import ValidateFields
 from scipy.optimize import fsolve
 
 def IsFinsClass(MicroFins):
@@ -125,8 +125,8 @@ def MultiLouveredMicroFins(Inputs):
                                    -->||<--
                                       lp
        
-          /     /     /---------\     \    \
-    _____/     /     /           \     \    \____
+          /     /     /---------\\    \\   \\
+    _____/     /     /           \\    \\   \\___
         
       
      Lf: Fin length (flow depth)

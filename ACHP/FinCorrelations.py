@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import HAPropsSI
 from math import sqrt,pi,tanh,exp,cos,log
-from ACHP.ACHPTools import ValidateFields
+from ACHPTools import ValidateFields
 
 def IsFinsClass(Fins):
     '''
@@ -115,19 +115,19 @@ def WavyLouveredFins(Inputs):
     
                  |--       Pl      -|
                 ___                 |
-              /     \               |
+              /     \\              |
        =     |       |              |
-       |      \ ___ /               |
+       |     \\ ___ /               |
        |                            |
        |                           ___      
-       |                         /     \      |
+       |                         /     \\     |
       Pt                        |       |     D
-       |                         \ ___ /      |
+       |                        \\ ___ /      |
        |    
        |        ___
-       |      /     \
+       |      /     \\
        =     |       |
-              \ ___ /
+             \\ ___ /
     """
     
     Ntubes_bank = Inputs.Tubes.NTubes_per_bank  #tubes per bank
