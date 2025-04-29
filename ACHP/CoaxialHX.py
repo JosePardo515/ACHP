@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import PropsSI
-from ACHP.Correlations import f_h_1phase_Annulus,f_h_1phase_Tube,ShahEvaporation_Average
-from ACHP.Correlations import TwoPhaseDensity,LMPressureGradientAvg,AccelPressureDrop
+from Correlations import f_h_1phase_Annulus,f_h_1phase_Tube,ShahEvaporation_Average
+from Correlations import TwoPhaseDensity,LMPressureGradientAvg,AccelPressureDrop
 from math import pi,exp,log
 from scipy.optimize import brentq
 import numpy as np

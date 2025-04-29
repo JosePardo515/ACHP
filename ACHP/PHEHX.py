@@ -7,7 +7,7 @@ from scipy.optimize import brentq
 import numpy as np
 import pylab
 
-from ACHP.Correlations import ShahEvaporation_Average,PHE_1phase_hdP,Cooper_PoolBoiling,TwoPhaseDensity,TrhoPhase_ph,Phase_ph,LMPressureGradientAvg,KandlikarPHE,Bertsch_MC,AccelPressureDrop,ShahCondensation_Average,LongoCondensation,Petterson_supercritical,Petterson_supercritical_average,f_h_1phase_Tube,f_h_1phase_Annulus,KandlikarEvaporation_average
+from Correlations import ShahEvaporation_Average,PHE_1phase_hdP,Cooper_PoolBoiling,TwoPhaseDensity,TrhoPhase_ph,Phase_ph,LMPressureGradientAvg,KandlikarPHE,Bertsch_MC,AccelPressureDrop,ShahCondensation_Average,LongoCondensation,Petterson_supercritical,Petterson_supercritical_average,f_h_1phase_Tube,f_h_1phase_Annulus,KandlikarEvaporation_average
 
 class PHEHXClass():
     """
@@ -634,9 +634,9 @@ class PHEHXClass():
         cp_h=Inputs['cp_h']
         cp_c=Inputs['cp_c']
         #Mole mass of refrigerant for Cooper correlation
-        M=AS_c.molar_mass()*1000 #[kg/kmol]
+        M=self.AS_c.molar_mass()*1000 #[kg/kmol]
         #Reduced pressure for Cooper Correlation
-        pcrit_c = AS_c.p_critical() #critical pressure of Ref_c [Pa]
+        pcrit_c = self.AS_c.p_critical() #critical pressure of Ref_c [Pa]
         pstar=Inputs['pin_c']/pcrit_c
         change=999
         w=1

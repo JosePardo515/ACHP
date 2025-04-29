@@ -4,7 +4,7 @@ import CoolProp as CP
 
 from scipy.optimize import brentq
 from math import pi,exp,log,sqrt,tan,cos,sin,pow,atan
-from  ACHP.convert_units import cms2gpm, psi2kPa, C2K, in2m
+from convert_units import cms2gpm, psi2kPa, C2K, in2m
 
 class ExpDevClass():
     """

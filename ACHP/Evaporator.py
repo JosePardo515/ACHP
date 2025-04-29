@@ -14,6 +14,7 @@ from ACHPTools import ValidateFields
 class EvaporatorClass():
     def __init__(self,**kwargs):
         self.__dict__.update(kwargs)
+
     def Update(self,**kwargs):
         self.__dict__.update(kwargs)
         
@@ -281,9 +282,7 @@ class EvaporatorClass():
         xv=np.linspace(0,1,int(Nbends))
         
         self.Tbends=interp1d(x,Tv)(xv)
-        
-        
-        
+
     def _TwoPhase_Forward(self,w_2phase):
     
         DWS=DWSVals() #DryWetSegment structure

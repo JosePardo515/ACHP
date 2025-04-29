@@ -1,9 +1,9 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import HAPropsSI 
 from scipy.optimize import fsolve, minimize
-from . import Correlations
+from Correlations import ShahEvaporation_Average,f_h_1phase_Tube
 from math import pi
-from .Solvers import MultiDimNewtRaph
+from Solvers import MultiDimNewtRaph
 import numpy as np
 import CoolProp as CP
 
@@ -51,7 +51,7 @@ def DXPreconditioner(Cycle,epsilon=0.96):
         Tin_a=Evap.Fins.Air.Tdb
         Tout_a=Tin_a+Qevap_dry/(Evap.Fins.mdot_da*Evap.Fins.cp_da)
         #Refrigerant-side heat transfer UA
-        UA_r=Evap.A_r_wetted*Correlations.ShahEvaporation_Average(0.5,0.5,AS,Evap.G_r,Evap.ID,Evap.psat_r,Qevap_dry/Evap.A_r_wetted,Evap.Tbubble_r,Evap.Tdew_r)
+        UA_r=Evap.A_r_wetted*ShahEvaporation_Average(0.5,0.5,AS,Evap.G_r,Evap.ID,Evap.psat_r,Qevap_dry/Evap.A_r_wetted,Evap.Tbubble_r,Evap.Tdew_r)
         #Get wall temperatures at inlet and outlet from energy balance
         T_so_a=(UA_a*Evap.Tin_a+UA_r*Tevap)/(UA_a+UA_r)
         T_so_b=(UA_a*Tout_a+UA_r*Tevap)/(UA_a+UA_r)
@@ -140,7 +140,7 @@ def SecondaryLoopPreconditioner(Cycle,epsilon=0.9):
             Tout_a=CC.Tin_a-Qcoolingcoil_dry/(CC.Fins.mdot_a*CC.Fins.cp_a)
             
             # Refrigerant side UA
-            f,h,Re=Correlations.f_h_1phase_Tube(Cycle.Pump.mdot_g/CC.Ncircuits, CC.ID, Tin_CC, CC.pin_g, CC.AS_g)
+            f,h,Re=f_h_1phase_Tube(Cycle.Pump.mdot_g/CC.Ncircuits, CC.ID, Tin_CC, CC.pin_g, CC.AS_g)
             UA_r=CC.A_g_wetted*h
             #Glycol specific heat
             AS_SLF.update(CP.PT_INPUTS,Cycle.Pump.pin_g,Tin_CC)

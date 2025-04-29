@@ -1,10 +1,10 @@
 from __future__ import division, print_function, absolute_import
 from math import pi,log,exp
 from CoolProp.CoolProp import HAPropsSI
-from ACHP.Correlations import f_h_1phase_MicroTube,KM_Cond_Average,TwoPhaseDensity,AccelPressureDrop 
-from ACHP.MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
+from Correlations import f_h_1phase_MicroTube,KM_Cond_Average,TwoPhaseDensity,AccelPressureDrop 
+from MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
 from scipy.optimize import brentq, fsolve
-from ACHP.ACHPTools import ValidateFields
+from ACHPTools import ValidateFields
 import CoolProp as CP
 
 class FinVals():

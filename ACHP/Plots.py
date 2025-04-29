@@ -191,7 +191,7 @@ class PlotsClass():
             T_cond=np.r_[Cycle.Condenser.Tin_r, Tdew_cond,Tbubble_cond,Cycle.Condenser.Tout_r]
             self.axes.plot(s_cond,T_cond,'k',lw=2)
             self.axes.plot(s_cond[3],T_cond[3],'ko',mfc='w')
-            self.axes.text(s_cond[3],T_cond[3],'3$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(s_cond[3],T_cond[3],r'3$\quad\quad$',ha='right',va='bottom')
             
             self.axes.plot([s_cond[3],s_cond[0]],[Cycle.Condenser.Tin_a,Cycle.Condenser.Tout_a],'r-')
 
@@ -229,7 +229,7 @@ class PlotsClass():
             T_evap=np.r_[Cycle.Evaporator.Tin_r, Cycle.Tdew_evap,Cycle.Evaporator.Tout_r]
             self.axes.plot(s_evap,T_evap,'k',lw=2)
             self.axes.plot(s_evap[0],T_evap[0],'ko',mfc='w')
-            self.axes.text(s_evap[0],T_evap[0],'4$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(s_evap[0],T_evap[0],r'4$\quad\quad$',ha='right',va='bottom')
             
             self.axes.plot([s_evap[2],s_evap[0]],[Cycle.Evaporator.Tin_a,Cycle.Evaporator.Tout_a],'r-')
             
@@ -255,7 +255,7 @@ class PlotsClass():
                     T_XV=np.r_[IHX.Tin_c,Cycle.Condenser.Tout_r]
                     T_IHXg=np.r_[IHX.Tout_h,IHX.Tin_h]
                     s_IHXg=np.r_[s_IHX[0],s_IHX[len(s_IHX)-1]]
-                    self.axes.text(s_IHX[0],T_IHX[0],'4$\quad\quad$',ha='right',va='top')
+                    self.axes.text(s_IHX[0],T_IHX[0],r'4$\quad\quad$',ha='right',va='top')
                     self.axes.plot(s_IHX[0],T_IHX[0],'ko',mfc='w')
                 else:
                     IHX=Cycle.PHEIHX
@@ -267,7 +267,7 @@ class PlotsClass():
                     T_XV=np.r_[Cycle.Evaporator.Tin_r,IHX.Tout_h]
                     T_IHXg=np.r_[IHX.Tout_c,IHX.Tin_c]
                     s_IHXg=np.r_[s_IHX[0],s_IHX[len(s_IHX)-1]]
-                    self.axes.text(s_IHX[3],T_IHX[3],'3$\quad\quad$',ha='right',va='top')
+                    self.axes.text(s_IHX[3],T_IHX[3],r'3$\quad\quad$',ha='right',va='top')
                     self.axes.plot(s_IHX[3],T_IHX[3],'ko',mfc='w')
             else:
                 raise ValueError('Secondary loop system must have a coaxial or PHE heat exchanger')
@@ -288,7 +288,7 @@ class PlotsClass():
             T_evap=np.r_[Cycle.Evaporator.Tsat_r, Cycle.Tdew_evap,Cycle.Evaporator.Tout_r]
             self.axes.plot(s_evap,T_evap,'k',lw=2)
             self.axes.plot(s_evap[0],T_evap[0],'ko',mfc='w')
-            self.axes.text(s_evap[0],T_evap[0],'4$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_evap[0],T_evap[0],r'4$\quad\quad$',ha='right',va='top')
             
             s_XV=np.r_[Cycle.Evaporator.sin_r/1000.,Cycle.Condenser.sout_r/1000.]
             T_XV=np.r_[Cycle.Evaporator.Tsat_r,Cycle.Condenser.Tout_r]
@@ -304,7 +304,7 @@ class PlotsClass():
             T_evap=np.r_[Cycle.Evaporator.Tsat_r, Cycle.Tdew_evap,Cycle.Evaporator.Tout_r]
             self.axes.plot(s_evap,T_evap,'k',lw=2)
             self.axes.plot(s_evap[0],T_evap[0],'ko',mfc='w')
-            self.axes.text(s_evap[0],T_evap[0],'4$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_evap[0],T_evap[0],r'4$\quad\quad$',ha='right',va='top')
             
             s_XV=np.r_[Cycle.Evaporator.sin_r/1000.,Cycle.GasCooler.sout_r/1000.]
             T_XV=np.r_[Cycle.Evaporator.Tsat_r,Cycle.GasCooler.Tout_r]
@@ -319,13 +319,13 @@ class PlotsClass():
             T_evap=np.r_[Cycle.Evaporator.Tin_r, Cycle.Tdew_evap,Cycle.Evaporator.Tout_r]
             self.axes.plot(s_evap,T_evap,'k',lw=2)
             self.axes.plot(s_evap[0],T_evap[0],'ko',mfc='w')
-            self.axes.text(s_evap[0],T_evap[0],'7$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_evap[0],T_evap[0],r'7$\quad\quad$',ha='right',va='top')
 
             s_PHEHX = np.r_[Cycle.PHEHX.sout_h/1000.,Cycle.Condenser.sout_r/1000.]
             T_PHEHX = np.r_[Cycle.PHEHX.Tout_h,Cycle.Condenser.Tout_r]
             self.axes.plot(s_PHEHX,T_PHEHX,'k', lw = 2)
             self.axes.plot(s_PHEHX[0],T_PHEHX[0],'ko', mfc = 'w')
-            self.axes.text(s_PHEHX[0],T_PHEHX[0],'4$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(s_PHEHX[0],T_PHEHX[0],r'4$\quad\quad$',ha='right',va='bottom')
             s_XV=np.r_[Cycle.Evaporator.sin_r/1000.,Cycle.PHEHX.sout_h/1000.]
             T_XV=np.r_[Cycle.Evaporator.Tin_r,Cycle.PHEHX.Tout_h]
             self.axes.plot(s_XV,T_XV,'k', lw = 2)   
@@ -342,7 +342,7 @@ class PlotsClass():
             T_1INJ=np.r_[Cycle.PHEHX.Tin_c,Tdew_inj,Cycle.PHEHX.Tout_c]
             self.axes.plot(s_1INJ,T_1INJ,'k', lw = 2)
             self.axes.plot(s_1INJ[0],T_1INJ[0],'ko', mfc = 'w')
-            self.axes.text(s_1INJ[0],T_1INJ[0],'5$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(s_1INJ[0],T_1INJ[0],r'5$\quad\quad$',ha='right',va='bottom')
 
             self.axes.plot([s_evap[2],s_evap[0]],[Cycle.Evaporator.Tin_a,Cycle.Evaporator.Tout_a],'b-')
             self.axes.text(0.5*s_evap[2]+0.5*s_evap[0],Cycle.Evaporator.Tin_a,'Indoor Air',backgroundcolor='w',ha='center',va='center')
@@ -354,7 +354,7 @@ class PlotsClass():
             T_evap=np.r_[Cycle.Evaporator.Tin_r, Tdew_evap,Cycle.Evaporator.Tout_r]
             self.axes.plot(s_evap,T_evap,'k',lw=2)
             self.axes.plot(s_evap[0],T_evap[0],'ko',mfc='w')
-            self.axes.text(s_evap[0],T_evap[0],'9$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_evap[0],T_evap[0],r'9$\quad\quad$',ha='right',va='top')
 
             s_XV=np.r_[Cycle.FlashTank.sin/1000.,Cycle.Condenser.sout_r/1000.]
             T_XV=np.r_[Cycle.FlashTank.Tin,Cycle.Condenser.Tout_r]
@@ -364,21 +364,21 @@ class PlotsClass():
             T_FlashTank_liquid = np.r_[Cycle.FlashTank.Tin,Cycle.FlashTank.Tout]
             self.axes.plot(s_FlashTank_liquid,T_FlashTank_liquid,'k', lw = 2)
             self.axes.plot(s_FlashTank_liquid[0],T_FlashTank_liquid[0],'ko', mfc = 'w')
-            self.axes.text(s_FlashTank_liquid[0],T_FlashTank_liquid[0],'6$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_FlashTank_liquid[0],T_FlashTank_liquid[0],r'6$\quad\quad$',ha='right',va='top')
             
             
             s_1INJ=np.r_[Cycle.FlashTank.sin/1000,Cycle.Compressor.sinj_r/1000.]
             T_1INJ=np.r_[Cycle.FlashTank.Tin,Cycle.Compressor.Tinj_r]
             self.axes.plot(s_1INJ,T_1INJ,'k', lw = 2)
             self.axes.plot(s_1INJ[0],T_1INJ[0],'ro', mfc = 'w')
-            self.axes.text(s_1INJ[0],T_1INJ[0],'8$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(s_1INJ[0],T_1INJ[0],r'8$\quad\quad$',ha='right',va='bottom')
 
             s_XV2=np.r_[Cycle.FlashTank.sout/1000.,Cycle.Evaporator.sin_r/1000]
             T_XV2=np.r_[Cycle.FlashTank.Tin,Cycle.Evaporator.Tsat_r]
             self.axes.plot(s_XV[1],T_XV[1],'ko', mfc = 'w')
             self.axes.plot(s_XV2,T_XV2,'k', lw = 2) 
             self.axes.plot(s_XV2[0],T_XV2[0],'ko', mfc = 'w')
-            self.axes.text(s_XV2[0],T_XV2[0],'8$\quad\quad$',ha='right',va='top')
+            self.axes.text(s_XV2[0],T_XV2[0],r'8$\quad\quad$',ha='right',va='top')
 
             self.axes.plot([s_evap[2],s_evap[0]],[Cycle.Evaporator.Tin_a,Cycle.Evaporator.Tout_a],'b-')
             self.axes.text(0.5*s_evap[2]+0.5*s_evap[0],Cycle.Evaporator.Tin_a,'Indoor Air',backgroundcolor='w',ha='center',va='center')
@@ -568,7 +568,7 @@ class PlotsClass():
             p_evap=np.r_[Cycle.Evaporator.psat_r/1000, Cycle.Evaporator.psat_r/1000]
             self.axes.semilogy(h_evap,p_evap,'k', lw = 2)
             self.axes.semilogy(h_evap[0],p_evap[0],'ko', mfc = 'w')
-            self.axes.text(h_evap[0],p_evap[0],'4$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(h_evap[0],p_evap[0],r'4$\quad\quad$',ha='right',va='bottom')
         elif Cycle.CycleType=='1INJ_Econ' or Cycle.CycleType=='1INJ_FlashTank':
             h_cond=np.r_[Cycle.Condenser.hin_r/1000.,Cycle.Condenser.hout_r/1000.]
             p_cond=np.r_[Cycle.Compressor.pout_r/1000, Cycle.Compressor.pout_r/1000]
@@ -580,13 +580,13 @@ class PlotsClass():
             p_gascool=np.r_[Cycle.GasCooler.psat_r/1000, (Cycle.GasCooler.psat_r-Cycle.GasCooler.DP_r)/1000]
             self.axes.semilogy(h_gascool,p_gascool,'k', lw = 2)
             self.axes.semilogy(h_gascool[1],p_gascool[1],'ko', mfc = 'w')
-            self.axes.text(h_gascool[1],p_gascool[1],'3$\quad\quad$',ha='right',va='bottom')            
+            self.axes.text(h_gascool[1],p_gascool[1],r'3$\quad\quad$',ha='right',va='bottom')            
         else:
             h_cond=np.r_[Cycle.Condenser.hin_r/1000.,Cycle.Condenser.hout_r/1000.]
             p_cond=np.r_[Cycle.Condenser.psat_r/1000, (Cycle.Condenser.psat_r-Cycle.Condenser.DP_r)/1000]
             self.axes.semilogy(h_cond,p_cond,'k', lw = 2)
             self.axes.semilogy(h_cond[1],p_cond[1],'ko', mfc = 'w')
-            self.axes.text(h_cond[1],p_cond[1],'3$\quad\quad$',ha='right',va='bottom')
+            self.axes.text(h_cond[1],p_cond[1],r'3$\quad\quad$',ha='right',va='bottom')
         
         if Cycle.CycleType=="Secondary":
             if Cycle.IHXType=='Coaxial':
@@ -604,14 +604,14 @@ class PlotsClass():
                     h_XV=np.r_[IHX.hin_c/1000.,Cycle.Condenser.hout_r/1000.]
                     p_XV=np.r_[IHX.pin_c/1000,Cycle.Condenser.psat_r/1000]
                     self.axes.semilogy(h_IHX[0],p_IHX[0],'ko', mfc = 'w')
-                    self.axes.text(h_IHX[0],p_IHX[0],'4$\quad\quad$',ha='right',va='top')
+                    self.axes.text(h_IHX[0],p_IHX[0],r'4$\quad\quad$',ha='right',va='top')
                 else:
                     h_IHX=np.r_[IHX.hin_h/1000., IHX.hout_h/1000.]
                     p_IHX=np.r_[IHX.pin_h/1000, IHX.pin_h/1000]
                     h_XV=np.r_[Cycle.Evaporator.hin_r/1000.,IHX.hout_h/1000.]
                     p_XV=np.r_[Cycle.Evaporator.psat_r/1000,IHX.pin_h/1000]
                     self.axes.semilogy(h_IHX[1],p_IHX[1],'ko', mfc = 'w')
-                    self.axes.text(h_IHX[1],p_IHX[1],'3$\quad\quad$',ha='right',va='top')
+                    self.axes.text(h_IHX[1],p_IHX[1],r'3$\quad\quad$',ha='right',va='top')
             else:
                 raise ValueError('Secondary loop system must have a coaxial or PHE heat exchanger')
             
@@ -624,7 +624,7 @@ class PlotsClass():
             p_evap=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.Evaporator.psat_r/1000]
             self.axes.semilogy(h_evap,p_evap,'k', lw = 2)
             self.axes.semilogy(h_evap[0],p_evap[0],'ko', mfc = 'w')
-            self.axes.text(h_evap[0],p_evap[0],'4$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_evap[0],p_evap[0],r'4$\quad\quad$',ha='right',va='top')
             
             h_XV=np.r_[Cycle.Evaporator.hin_r/1000.,Cycle.Condenser.hout_r/1000.]
             p_XV=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.Condenser.psat_r/1000]
@@ -634,7 +634,7 @@ class PlotsClass():
             p_evap=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.Evaporator.psat_r/1000]
             self.axes.semilogy(h_evap,p_evap,'k', lw = 2)
             self.axes.semilogy(h_evap[0],p_evap[0],'ko', mfc = 'w')
-            self.axes.text(h_evap[0],p_evap[0],'4$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_evap[0],p_evap[0],r'4$\quad\quad$',ha='right',va='top')
             
             h_XV=np.r_[Cycle.Evaporator.hin_r/1000.,Cycle.GasCooler.hout_r/1000.]
             p_XV=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.GasCooler.psat_r/1000]
@@ -644,13 +644,13 @@ class PlotsClass():
             p_evap=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.Evaporator.psat_r/1000]
             self.axes.semilogy(h_evap,p_evap,'k', lw = 2)
             self.axes.semilogy(h_evap[0],p_evap[0],'ko', mfc = 'w')
-            self.axes.text(h_evap[0],p_evap[0],'7$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_evap[0],p_evap[0],r'7$\quad\quad$',ha='right',va='top')
 
             h_PHEHX = np.r_[Cycle.PHEHX.hout_h/1000.,Cycle.Condenser.hout_r/1000.]
             p_PHEHX = np.r_[Cycle.Compressor.pout_r/1000,Cycle.Compressor.pout_r/1000]
             self.axes.semilogy(h_PHEHX,p_PHEHX,'k', lw = 2)
             self.axes.semilogy(h_PHEHX[0],p_PHEHX[0],'ko', mfc = 'w')
-            self.axes.text(h_PHEHX[0],p_PHEHX[0],'4$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_PHEHX[0],p_PHEHX[0],r'4$\quad\quad$',ha='right',va='top')
             h_XV=np.r_[Cycle.Evaporator.hin_r/1000.,Cycle.PHEHX.hout_h/1000.]
             p_XV=np.r_[Cycle.Evaporator.psat_r/1000,(Cycle.PHEHX.pin_h-Cycle.PHEHX.DP_h)/1000.]
             self.axes.plot(h_XV,p_XV,'k', lw = 2)   
@@ -664,7 +664,7 @@ class PlotsClass():
             p_1INJ=np.r_[Cycle.PHEHX.pin_c/1000,(Cycle.PHEHX.pin_c-Cycle.PHEHX.DP_c)/1000.]
             self.axes.semilogy(h_1INJ,p_1INJ,'k', lw = 2)
             self.axes.semilogy(h_1INJ[0],p_1INJ[0],'ko', mfc = 'w')
-            self.axes.text(h_1INJ[0],p_1INJ[0],'5$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_1INJ[0],p_1INJ[0],r'5$\quad\quad$',ha='right',va='top')
 
         elif Cycle.CycleType=='1INJ_FlashTank':  
 
@@ -672,7 +672,7 @@ class PlotsClass():
             p_evap=np.r_[Cycle.Evaporator.psat_r/1000,Cycle.Evaporator.psat_r/1000]
             self.axes.semilogy(h_evap,p_evap,'k', lw = 2)
             self.axes.semilogy(h_evap[0],p_evap[0],'ko', mfc = 'w')
-            self.axes.text(h_evap[0],p_evap[0],'9$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_evap[0],p_evap[0],r'9$\quad\quad$',ha='right',va='top')
 
             h_XV=np.r_[Cycle.FlashTank.hin/1000.,Cycle.Condenser.hout_r/1000.]
             p_XV=np.r_[Cycle.FlashTank.pin/1000,Cycle.Compressor.pout_r/1000]
@@ -682,25 +682,24 @@ class PlotsClass():
             p_FlashTank_liquid = np.r_[Cycle.FlashTank.pin/1000,Cycle.FlashTank.pin/1000]
             self.axes.semilogy(h_FlashTank_liquid,p_FlashTank_liquid,'k', lw = 2)
             self.axes.semilogy(h_FlashTank_liquid[0],p_FlashTank_liquid[0],'ko', mfc = 'w')
-            self.axes.text(h_FlashTank_liquid[0],p_FlashTank_liquid[0],'6$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_FlashTank_liquid[0],p_FlashTank_liquid[0],r'6$\quad\quad$',ha='right',va='top')
             
             
             h_1INJ=np.r_[Cycle.FlashTank.hin/1000,Cycle.Compressor.hinj_r/1000.]
             p_1INJ=np.r_[Cycle.FlashTank.pin/1000,(Cycle.Compressor.pinj_r)/1000.]
             self.axes.semilogy(h_1INJ,p_1INJ,'k', lw = 2)
             self.axes.semilogy(h_1INJ[0],p_1INJ[0],'ro', mfc = 'w')
-            self.axes.text(h_1INJ[0],p_1INJ[0],'8$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_1INJ[0],p_1INJ[0],r'8$\quad\quad$',ha='right',va='top')
 
             h_XV2=np.r_[Cycle.FlashTank.hout/1000.,Cycle.Evaporator.hin_r/1000.]
             p_XV2=np.r_[Cycle.FlashTank.pin/1000.,Cycle.Evaporator.psat_r/1000.]
             self.axes.semilogy(h_XV[1],p_XV[1],'ko', mfc = 'w')
             self.axes.semilogy(h_XV2,p_XV2,'k', lw = 2) 
             self.axes.semilogy(h_XV2[0],p_XV2[0],'ko', mfc = 'w')
-            self.axes.text(h_XV2[0],p_XV2[0],'8$\quad\quad$',ha='right',va='top')
+            self.axes.text(h_XV2[0],p_XV2[0],r'8$\quad\quad$',ha='right',va='top')
 
         plt.show()
 
-    
     def PHEjector(self,Ejector,**kwargs):
   
         Ref=Ejector.Ref
@@ -733,7 +732,7 @@ class PlotsClass():
         self.axes.semilogy(hsatV,psatV,'k', lw = 1.5, alpha = 0.5)
         self.axes.semilogy(h_xd,psat/1000,'k', lw = 1.5, alpha = 0.3)
         
-        self.axes.text(Ejector.h_d/1000,0.8*Ejector.psat_ev/1000,'%0.2f$\quad\quad$' % Ejector.x_d,ha='right',va='top',backgroundcolor='w', color='k',alpha=0.3)        
+        self.axes.text(Ejector.h_d/1000,0.8*Ejector.psat_ev/1000,r'%0.2f$\quad\quad$' % Ejector.x_d,ha='right',va='top',backgroundcolor='w', color='k',alpha=0.3)        
         
         # Axes labels
         self.axes.set_xlabel('h [kJ/kg]')
@@ -747,21 +746,21 @@ class PlotsClass():
         h_gc_mb = np.r_[Ejector.hout_gc/1000,Ejector.h_mb/1000]
         p_gc_mb = np.r_[Ejector.pout_gc/1000,Ejector.p_mb/1000]
         self.axes.semilogy(h_gc_mb,p_gc_mb,'ko-', mfc = 'w')
-        self.axes.text(h_gc_mb[0],p_gc_mb[0],'gc$\quad\quad$',ha='left',va='bottom')
-        self.axes.text(h_gc_mb[1],p_gc_mb[1],'mb$\quad\quad$',ha='right',va='top')
+        self.axes.text(h_gc_mb[0],p_gc_mb[0],r'gc$\quad\quad$',ha='left',va='bottom')
+        self.axes.text(h_gc_mb[1],p_gc_mb[1],r'mb$\quad\quad$',ha='right',va='top')
 
         # Evaporator outlet
         hout_ev = Ejector.hout_ev/1000
         psat_ev = Ejector.psat_ev/1000
         self.axes.semilogy(hout_ev,psat_ev,'ko', mfc = 'w')
-        self.axes.text(hout_ev,psat_ev,'ev$\quad\quad$',ha='left',va='bottom')
+        self.axes.text(hout_ev,psat_ev,r'ev$\quad\quad$',ha='left',va='bottom')
 
         # Ejector suction stream to mix
         h_sb_mix = np.r_[Ejector.h_sb/1000,Ejector.h_mix/1000]
         p_sb_mix = np.r_[Ejector.p_sb/1000,Ejector.p_mix/1000]
         self.axes.semilogy(h_sb_mix,p_sb_mix,'ko-', mfc = 'w')
-        self.axes.text(h_sb_mix[0],p_sb_mix[0],'sb$\quad\quad$',ha='right',va='top')
-        self.axes.text(h_sb_mix[1],p_sb_mix[1],'mix$\quad\quad$',ha='right',va='top')        
+        self.axes.text(h_sb_mix[0],p_sb_mix[0],r'sb$\quad\quad$',ha='right',va='top')
+        self.axes.text(h_sb_mix[1],p_sb_mix[1],r'mix$\quad\quad$',ha='right',va='top')        
 
         # Ejector motion stream to mix
         h_mb_mix = np.r_[Ejector.h_mb/1000,Ejector.h_mix/1000]
@@ -772,7 +771,7 @@ class PlotsClass():
         h_d = Ejector.h_d/1000
         p_d = Ejector.p_d/1000
         self.axes.semilogy(h_d,p_d,'or', mfc = 'w')
-        self.axes.text(h_d,p_d,'d$\quad\quad$',ha='left',va='bottom')        
+        self.axes.text(h_d,p_d,r'd$\quad\quad$',ha='left',va='bottom')        
 
         self.axes.yaxis.set_major_formatter(ScalarFormatter())
         self.axes.yaxis.set_minor_formatter(ScalarFormatter())

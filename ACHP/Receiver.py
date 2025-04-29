@@ -5,7 +5,7 @@ from scipy.constants import g
 import numpy as np
 from CoolProp.CoolProp import PropsSI
 import CoolProp as CP
-from ACHP.Correlations import NaturalConv_HTC
+from Correlations import NaturalConv_HTC
 
 class LiquidReceiverClass():
         

@@ -119,7 +119,7 @@ def simple_write_to_file(head,data,file,append='True',newline=True):
     
     def callw(input):
         test=str(input)
-        if test==input:
+        if isinstance(input, str) and test == input:  # Verifica si es una cadena
             writertool(input)
         elif isinstance(input, dict):
             for key in input:
@@ -176,7 +176,6 @@ def print_dict(dict_inp):
         for keyword in dict_inp[key]:
             print (" > "+keyword+" < ",end='')
         print ("<<<")
-
 
 def ValidateFields(d,reqFields,optFields=None):
         '''
@@ -235,8 +234,8 @@ def get_svn_revision(path=None):
         entries = open(entries_path, 'r').read()
         # Versions >= 7 of the entries file are flat text.  The first line is
         # the version number. The next set of digits after 'dir' is the revision.
-        if re.match('(\d+)', entries):
-            rev_match = re.search('\d+\s+dir\s+(\d+)', entries)
+        if re.match(r'(\d+)', entries):
+            rev_match = re.search(r'\d+\s+dir\s+(\d+)', entries)
             if rev_match:
                 rev = rev_match.groups()[0]
         # Older XML versions of the file specify revision as an attribute of
@@ -250,13 +249,11 @@ def get_svn_revision(path=None):
         return u'SVN-%s' % rev
     return u'SVN-unknown'
 
-
 def subsample(data, sample_size):
     #subsample data
     sample_size=int(sample_size)
     samples = list(zip(*[iter(data)]*sample_size))   # use 3 for triplets, etc.
     return map(lambda x:sum(x)/float(len(x)), samples)
-
 
 def smooth_curve(curve_data,N_smooth,exp_max=-1,shift_0=0,fix_first_nonzero=False,plotit=False,t='x for plot'):
     """

@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import PropsSI
-from ACHP.Correlations import f_h_1phase_Tube,TrhoPhase_ph
+from Correlations import f_h_1phase_Tube,TrhoPhase_ph
 from math import log,pi,exp
-from ACHP.convert_units import *
+from convert_units import *
 import CoolProp as CP
 
 class SightGlassFilterDrierMicroMotionClass():

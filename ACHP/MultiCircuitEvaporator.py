@@ -1,14 +1,14 @@
 from __future__ import division, print_function, absolute_import
 from math import floor,ceil
 from CoolProp.CoolProp import PropsSI
-from ACHP.FinCorrelations import FinInputs
-from ACHP.Evaporator import EvaporatorClass
+from FinCorrelations import FinInputs
+from Evaporator import EvaporatorClass
 import numpy as np
 import matplotlib.pyplot as plt
 import copy
 import CoolProp
 from scipy.optimize import newton
-from ACHP.ACHPTools import Write2CSV
+from ACHPTools import Write2CSV
 import CoolProp as CP
 
 #MultiCircuitEvaporator inherits things from the Evaporator base class

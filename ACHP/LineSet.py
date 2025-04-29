@@ -1,6 +1,6 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import PropsSI
-from ACHP.Correlations import f_h_1phase_Tube,TrhoPhase_ph
+from Correlations import f_h_1phase_Tube,TrhoPhase_ph
 from math import log,pi,exp
 import CoolProp as CP
 
