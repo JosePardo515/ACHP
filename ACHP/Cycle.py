@@ -731,7 +731,11 @@ class DXCycleClass():
         self.LineSetDischarge=LineSetOptionClass()
         self.LineSetLiquid=LineSetOptionClass()
         self.ExpDev=ExpDevClass()
-        
+        self.Evaporator=EvaporatorClass()
+        self.Condenser=CondenserClass()
+        self.AS = CP.AbstractState("","R22")  # Define the attribute AS
+        self.Oil = 'POE32'
+
     def Update(self):
         '''
         Update cycle class with selected HX type
@@ -1141,7 +1145,7 @@ class DXCycleClass():
             self.DP_LowPressure=self.Evaporator.DP_r+self.LineSetSuction.DP
         else:
             ValueError("DX Cycle mode must be 'AC', or 'HP'")     
-        
+       
         if self.Verbosity>1:
             print ('DTevap {:4.4f} DTcond {:4.4f} DTsh {:4.4f} resid[0] {:12.6e} resid[1]: {:12.6e} resid[3]: {:12.6e} Charge {:4.4f} SC: {:4.4f}'.format(DT_evap,DT_cond,DT_sh,resid[0],resid[1],resid[2],self.Charge,self.Condenser.DT_sc))
         self.DT_evap=DT_evap
@@ -1202,14 +1206,18 @@ class DXCycleClass():
                     if delta_low<1 and delta_high<1:
                         DP_converged=True
                     if self.Verbosity>4:
-                        print (self.DP_HighPressure,self.DP_LowPressure,'DPHP')
+                        print(f'{self.DP_HighPressure} {self.DP_LowPressure} DPHP')
                     GoodRun=True
             except AttributeError:
                 # This will be a fatal error !! Should never have attribute error
                 raise 
             except:
                 print ("--------------  Exception Caught ---------------- ")
-                print ("Error of type",sys.exc_info()[0]," is: " + sys.exc_info()[1].message)
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                print("Exception type:", exc_type)
+                print("Exception value:", exc_value)
+                print("Traceback object:", exc_traceback)
+                print ("------------------------------------------------- ")
                 raise
         
         if self.Verbosity>0:
@@ -1767,7 +1775,11 @@ class VariableSpeedHPClass():
                 raise 
             except:
                 print ("--------------  Exception Caught ---------------- ")
-                print ("Error of type",sys.exc_info()[0]," is: " + sys.exc_info()[1].message)
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                print("Exception type:", exc_type)
+                print("Exception value:", exc_value)
+                print("Traceback object:", exc_traceback)
+                print ("------------------------------------------------- ")
                 raise
         
         if self.Verbosity>0:

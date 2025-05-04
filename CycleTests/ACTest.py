@@ -2,7 +2,7 @@
 from __future__ import division, absolute_import, print_function
 from ACHP.Cycle import DXCycleClass 
 from ACHP.Plots import PlotsClass
-from ACHP.SecondLawAnalysis import SecondLawAnalysisClass
+#from ACHP.SecondLawAnalysis import SecondLawAnalysisClass
 
 # Instantiate the cycle class
 Cycle=DXCycleClass()
@@ -171,14 +171,14 @@ Cycle.LineSetDischarge.ID=0.007986
 from time import time
 t1=time()
 Cycle.PreconditionedSolve()
-print ('Took '+str(time()-t1)+' seconds to run Cycle model')
-print ('Cycle COP is '+str(Cycle.COSP))
-print ('Cycle refrigerant charge is '+str(Cycle.Charge)+' kg')
+print (f'Took {time()-t1} seconds to run Cycle model')
+print (f'Cycle COP is {Cycle.COSP}')
+print (f'Cycle refrigerant charge is {Cycle.Charge} kg')
 
 # Now run Second Law analysis
-SecondLaw = SecondLawAnalysisClass()
-SecondLaw.DXCycle(Cycle)
-print ('Cycle Second Law is '+str(SecondLaw.epsilon_sys))
+# SecondLaw = SecondLawAnalysisClass()
+# SecondLaw.DXCycle(Cycle)
+# print ('Cycle Second Law is '+str(SecondLaw.epsilon_sys))
 
 # Now do cycle plotting
 plot = PlotsClass()

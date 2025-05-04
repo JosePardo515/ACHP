@@ -294,7 +294,7 @@ class MicroChannelEvaporatorClass():
         #Determine each bend temperature by interpolation
         #------------------------------------------------
         #Number of bends (including inlet and outlet of coil)
-        Nbends=1+self.Lcircuit/self.Ltube
+        Nbends=int(1+self.Lcircuit/self.Ltube)
         #x-position of each point
         xv=np.linspace(0,1,Nbends)
         

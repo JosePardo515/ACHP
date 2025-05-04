@@ -5,8 +5,9 @@ matplotlib.use('WxAgg')
 import wx,os
 import time,sys
 import ACHPMainFrame
+import wx.adv
 
-class MySplashScreen(wx.SplashScreen):
+class MySplashScreen(wx.adv.SplashScreen):
     """
     Create a splash screen widget.
     """
@@ -14,11 +15,11 @@ class MySplashScreen(wx.SplashScreen):
         # This is a recipe to a the screen.
         # Modify the following variables as necessary.
         aBitmap = wx.Image(name = os.path.join("imgs","Splash.png")).ConvertToBitmap()
-        splashStyle = wx.SPLASH_CENTRE_ON_SCREEN | wx.SPLASH_TIMEOUT
+        splashStyle = wx.adv.SPLASH_CENTRE_ON_SCREEN | wx.adv.SPLASH_TIMEOUT
         splashDuration = 2 # milliseconds
         # Call the constructor with the above arguments in exactly the
         # following order.
-        wx.SplashScreen.__init__(self, aBitmap, splashStyle,
+        wx.adv.SplashScreen.__init__(self, aBitmap, splashStyle,
                                  splashDuration, parent)
         self.Bind(wx.EVT_CLOSE, self.OnExit)
 

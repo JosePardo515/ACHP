@@ -125,8 +125,8 @@ def MultiLouveredMicroFins(Inputs):
                                    -->||<--
                                       lp
        
-          /     /     /---------\     \    \
-    _____/     /     /           \     \    \____
+          /     /     /---------\\    \\   \\
+    _____/     /     /           \\    \\   \\___
         
       
      Lf: Fin length (flow depth)

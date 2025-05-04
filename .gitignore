@@ -1,3 +1,7 @@
 *.pyc
 /Documentation/Web/_build
 ACHP/__pycache__
+__pycache__
+/.venv
+/.vscode
+Test.py

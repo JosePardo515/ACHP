@@ -396,7 +396,12 @@ def DryWetSegment(DWS):
 
     DWS.f_dry=f_dry
     DWS.omega_out=HAPropsSI('W','T',Tout_a,'P',101325,'H',hout_a)
-    DWS.RHout_a=HAPropsSI('R','T',Tout_a,'P',101325,'W',DWS.omega_out)
+    maxwet=HAPropsSI('W','T',Tout_a,'P',101325,'R',1)
+    if (maxwet<DWS.omega_out): 
+        DWS.omega_out=maxwet
+        DWS.RHout_a=1
+    else:
+        DWS.RHout_a=HAPropsSI('R','T',Tout_a,'P',101325,'W',DWS.omega_out)
     DWS.Tout_a=Tout_a
     DWS.Q=Q
     DWS.Q_sensible=Q_sensible

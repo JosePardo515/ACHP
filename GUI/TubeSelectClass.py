@@ -91,7 +91,7 @@ class TubeSelectClass(wx.Frame):
                 OD=2.125
                 ID=OD-0.070*2
             else:
-                print "Invalid selection"
+                print("Invalid selection")
                 isOK=False
                 
         if self.cmbMaterial.GetValue()=="PVC - Schedule 40":
@@ -115,7 +115,7 @@ class TubeSelectClass(wx.Frame):
                 OD=2.375
                 ID=OD-0.154*2
             else:
-                print "Invalid selection"
+                print("Invalid selection")
                 isOK=False
                 
         if self.cmbMaterial.GetValue()=="Steel - Schedule 40":
@@ -145,7 +145,7 @@ class TubeSelectClass(wx.Frame):
                 OD=2.375
                 ID=OD-0.154*2
             else:
-                print "Invalid selection"
+                print("Invalid selection")
                 isOK=False
                 
         if isOK==True:

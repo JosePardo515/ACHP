@@ -17,7 +17,8 @@ def IsFinsClass(Fins):
 class FinsVals:
     pass    
 class TubesVals:
-    pass
+    def __init__(self):
+            self.kw = 237  # Valor predeterminado para la conductividad térmica
 class AirVals:
     pass
         
@@ -115,19 +116,19 @@ def WavyLouveredFins(Inputs):
     
                  |--       Pl      -|
                 ___                 |
-              /     \               |
+              /     \\              |
        =     |       |              |
-       |      \ ___ /               |
+       |     \\ ___ /               |
        |                            |
        |                           ___      
-       |                         /     \      |
+       |                         /     \\     |
       Pt                        |       |     D
-       |                         \ ___ /      |
+       |                        \\ ___ /      |
        |    
        |        ___
-       |      /     \
+       |      /     \\
        =     |       |
-              \ ___ /
+             \\ ___ /
     """
     
     Ntubes_bank = Inputs.Tubes.NTubes_per_bank  #tubes per bank

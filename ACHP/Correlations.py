@@ -1,10 +1,11 @@
 from __future__ import division, print_function, absolute_import
 from math import pi,log,sqrt,exp,cos,sin,tan,log10
-from scipy.integrate import quad,quadrature,trapz,simps,fixed_quad
-from scipy.optimize import brentq,fsolve
+from scipy.integrate import quad,simpson
+#from scipy.integrate import quadrature,trapz,fixed_quad
+#from scipy.optimize import brentq,fsolve
 import numpy as np
 import CoolProp as CP
-import CoolProp
+#import CoolProp
 
 try:
     import psyco
@@ -13,7 +14,7 @@ except ImportError:
     pass
 
 #Machine precision
-machine_eps=np.finfo(np.float).eps
+machine_eps=np.finfo(float).eps
 
 def Phase_ph(AS,p,h,Tbubble,Tdew,rhosatL,rhosatV):
     """
@@ -220,7 +221,7 @@ def LMPressureGradientAvg(x_min,x_max,AS,G,D,Tbubble,Tdew,C=None,satTransport=No
         DP=np.zeros_like(xx)
         for i in range(len(xx)):
             DP[i]=LMFunc(xx[i])
-        return -simps(DP,xx)/(x_max-x_min)
+        return -simpson(DP,xx)/(x_max-x_min)
 
 def LockhartMartinelli(AS, G, D, x, Tbubble,Tdew,C=None,satTransport=None):
     # Following the method laid out in ME506 notes on 
@@ -421,7 +422,7 @@ def ShahEvaporation_Average(x_min,x_max,AS,G,D,p,q_flux,Tbubble,Tdew):
         return h[0]
     else:
         #Use Simpson's rule to carry out numerical integration to get average
-        return simps(h,x)/(x_max-x_min)
+        return simpson(h,x)/(x_max-x_min)
 
 def KandlikarEvaporation_average(x_min,x_max,AS,G,D,p,q_flux,Tbubble,Tdew):
     """
@@ -535,7 +536,7 @@ def KandlikarEvaporation_average(x_min,x_max,AS,G,D,p,q_flux,Tbubble,Tdew):
         return h[0]
     else:
         #Use Simpson's rule to carry out numerical integration to get average
-        return simps(h,x)/(x_max-x_min)
+        return simpson(h,x)/(x_max-x_min)
     
 def LongoCondensation(x_avg,G,dh,AS,TsatL,TsatV):
     
@@ -780,26 +781,26 @@ def PHE_1phase_hdP(Inputs,JustGeo=False):
     ::
         =============================        
         ||   __               __    ||
-        ||  /  \             /  \   ||
+        || //  \\           //  \\  ||
         || |    |           |    |  ||  ===
-        ||  \__/             \__/   ||   |
+        || \\__//           \\__//  ||   |
         ||                          ||   |
         ||             | <-  B   -> ||   |
         ||                          ||   |
         ||                          ||   |
         ||                          ||
         ||                          ||
-        ||             |\           ||
-        ||             | \          ||   Lp
-        ||             |  \         ||  
-        ||             |   \        ||
-        ||             |phi \       ||
-        ||             |     \      ||   |
+        ||             |\\          ||
+        ||             | \\         ||   Lp
+        ||             |  \\        ||  
+        ||             |   \\       ||
+        ||             |phi \\      ||
+        ||             |     \\     ||   |
         ||                          ||   |
         ||   __               __    ||   |
-        ||  /  \             /  \   ||   |
+        || //  \\           //  \\  ||   |
         || |    |           |    |  ||  ===
-        ||  \__/             \__/   ||
+        || \\__//           \\__//  ||
         ||                          ||
         =============================
          | -----      Bp  --------- |
@@ -914,28 +915,28 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
 
         Square-pitch layout (Fig. 5.21a)
              __               ___ do
-            /  \             / | \   
+            /  \\            / | \\  
            |    |           | di  | ========   
-            \__/             \_|_/ ___    |
+           \\__/            \\_|_/ ___    |
     Flow                            |     |
     ===>                            Ct   Pt
              __               __ ___|_    |
-            /  \             /  \         |
+            /  \\            /  \\        |
            |    |           |    | ========    
-            \__/             \__/ 
+           \\__/            \\__/ 
 
 
      `  Triangular-pitch layout (Fig. 5.21b)
                               do
-                         / | \   
+                         / | \\  
                         | di  |                 ==========   
-             __          \_|_/ ___        __            |
-            /  \                |        /   \          |
+             __         \\_|_/ ___        __            |
+            /  \\               |        /   \\         |
     Flow   |    |              Ct       |     |         Pt
-    ===>    \__/           __ __|_       \ __/          |
-                          /  \                          |
+    ===>   \\__/           __ __|_      \\ __/          |
+                          /  \\                         |
                          |    |                  =========   
-                          \__/ 
+                         \\__/ 
 
     """
         
@@ -982,7 +983,7 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
     Ac_shell = Ds*Ct*B/Pt
     
     # Diameter ratio (Eq. 5.132)
-    dr = do/dt
+    dr = do/di
     
     # Tube pitch ratio (Eq. 5.133)
     Pr = Pt/do
@@ -991,11 +992,11 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
     Ct = Pt - do
 
     # Tube ciynt constant (CTP) (Eq. 5.136)
-    if NumberPasses == 1:
+    if Np == 1:
         CTP = 0.93 # one-pass exchanger    
-    elif NumberPasses == 2:
+    elif Np == 2:
         CTP = 0.90 # two-pass exchanger    
-    elif NumberPasses == 3:
+    elif Np == 3:
         CTP = 0.85 # three-pass exchanger    
     else:
         raise
@@ -1004,7 +1005,7 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
     ShadedArea = CL*Pt**2
     
     # Number of tubes
-    Nt = CPT*(pi*Ds**2/4)/ShadedArea
+    Nt = CTP*(pi*Ds**2/4)/ShadedArea
     
     # Heat transfer areas of inner and outer surfaces of pipe
     Ai = pi*di*Nt*Lt
@@ -1295,7 +1296,7 @@ def KM_Cond_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,C=None,satTransport=
             return -DP[0], h[0]
         else:
             #Use Simpson's rule to carry out numerical integration to get average DP and average h
-            return -simps(DP,xx)/(x_max-x_min), simps(h,xx)/(x_max-x_min)
+            return -simpson(DP,xx)/(x_max-x_min), simpson(h,xx)/(x_max-x_min)
         
 def Kim_Mudawar_condensing_DPDZ_h(AS, G, Dh, x, Tbubble, Tdew, p, beta, C=None, satTransport=None):
     """
@@ -1491,7 +1492,7 @@ def KM_Evap_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,q_fluxH,PH_PF=1,C=No
             return -DP[0], h[0]
         else:
             #Use Simpson's rule to carry out numerical integration to get average DP and average h
-            return -simps(DP,xx)/(x_max-x_min), simps(h,xx)/(x_max-x_min)
+            return -simpson(DP,xx)/(x_max-x_min), simpson(h,xx)/(x_max-x_min)
         
 def Kim_Mudawar_boiling_DPDZ_h(AS, G, Dh, x, Tbubble, Tdew, p, beta, q_fluxH, PH_PF=1, C=None, satTransport=None):
     """

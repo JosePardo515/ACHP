@@ -119,7 +119,7 @@ def simple_write_to_file(head,data,file,append='True',newline=True):
     
     def callw(input):
         test=str(input)
-        if test==input:
+        if isinstance(input, str) and test == input:  # Verifica si es una cadena
             writertool(input)
         elif isinstance(input, dict):
             for key in input:
@@ -208,20 +208,20 @@ def ValidateFields(d,reqFields,optFields=None):
             if field in d:
                 #See if you can do a type cast using the conversion function pointer
                 # You should get the same value back
-                assert typepointer(d[field])==d[field],field+': failed type conversion, should be '+str(typepointer)
+                assert typepointer(d[field])==d[field],f"{field}: failed type conversion, should be {typepointer}"
                 #check the bounds if numeric input
                 if typepointer in (float,int):
-                    assert d[field]>=min and d[field]<=max,field+' (value: %g) not in the range [%g,%g]'%(d[field],min,max)
+                    assert d[field]>=min and d[field]<=max,f"{field} (value: {d[field]}) not in the range [{min},{max}]"
                 #remove field from dictionary of terms left to check if no errors
                 del d[field]
             else:
-                raise AttributeError('Required field '+field+' not included')
+                raise AttributeError(f"Required field {field} not included")
         #Optional parameters (not strictly checked, just checked their existence)
         if optFields!=None:
             for field in optFields:
                 if field in d:
                     del d[field]
-        assert len(d)==0,'Unmatched fields found: '+str(d.keys())
+        assert len(d)==0,f"Unmatched fields found: {d.keys()}"
         
 def get_svn_revision(path=None):
     import re
@@ -235,8 +235,8 @@ def get_svn_revision(path=None):
         entries = open(entries_path, 'r').read()
         # Versions >= 7 of the entries file are flat text.  The first line is
         # the version number. The next set of digits after 'dir' is the revision.
-        if re.match('(\d+)', entries):
-            rev_match = re.search('\d+\s+dir\s+(\d+)', entries)
+        if re.match(r'(\d+)', entries):
+            rev_match = re.search(r'\d+\s+dir\s+(\d+)', entries)
             if rev_match:
                 rev = rev_match.groups()[0]
         # Older XML versions of the file specify revision as an attribute of

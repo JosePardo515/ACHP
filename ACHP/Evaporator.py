@@ -13,7 +13,10 @@ from ACHP.ACHPTools import ValidateFields
 
 class EvaporatorClass():
     def __init__(self,**kwargs):
+        self.Fins=FinInputs()
+        self.FinsType = 'PlainFins'  # Inicializa FinsType con un valor predeterminado
         self.__dict__.update(kwargs)
+        
     def Update(self,**kwargs):
         self.__dict__.update(kwargs)
         
@@ -95,6 +98,9 @@ class EvaporatorClass():
             HerringboneFins(self.Fins)
         elif self.FinsType == 'PlainFins':
             PlainFins(self.Fins)
+        elif self.FinsType == None: 
+            self.FinsType == 'PlainFins'
+            PlainFins(self.Fins)
     
     def Initialize(self):
         #Input validation the first call of Initialize
@@ -167,6 +173,9 @@ class EvaporatorClass():
         elif self.FinsType == 'HerringboneFins':
             HerringboneFins(self.Fins)
         elif self.FinsType == 'PlainFins':
+            PlainFins(self.Fins)
+        elif self.FinsType == None: 
+            self.FinsType == 'PlainFins'
             PlainFins(self.Fins)
 
         self.mdot_ha=self.Fins.mdot_ha #[kg_ha/s]
