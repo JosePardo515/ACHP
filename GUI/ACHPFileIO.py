@@ -15,9 +15,9 @@ def setField(Cycle,fieldName,value):
         fieldName=fieldName.partition('.')[2] #Keep only that to the right of first '.'
         #Update the fields list
         fields=fieldName.split('.')
-        print type(S),fieldName,len(fieldName.split('.'))
+        print(type(S),fieldName,len(fieldName.split('.')))
     
-    print type(S),fields[0],value
+    print(type(S),fields[0],value)
     setattr(S,fields[0],value)
                 
 def GUI2DXCycleInputs(GUI):
@@ -54,6 +54,8 @@ def GUI2DXCycleInputs(GUI):
 
     Cycle.Compressor.fp                 =float(GUI.txtCompfp.GetValue())
     Cycle.Compressor.Vdot_ratio         =float(GUI.txtCompVdot_ratio.GetValue())
+    Cycle.Compressor.shell_pressure='low-pressure'
+    Cycle.Compressor.V_oil_sump=0
     Cycle.Evaporator.DT_sh              =float(GUI.txtCycleDTsh.GetValue())
     
     if GUI.radCycleMode.GetStringSelection()=='Cooling Mode':
@@ -150,23 +152,23 @@ def GUI2DXCycleInputs(GUI):
         Cycle.Condenser.Verbosity           =0
         
     
-    Cycle.LineSetSupply.L                 =float(GUI.txtLineSetL.GetValue())
-    Cycle.LineSetSupply.OD                =float(GUI.txtLineSetOD_supply.GetValue())
-    Cycle.LineSetSupply.ID                =float(GUI.txtLineSetID_supply.GetValue())
-    Cycle.LineSetSupply.t_insul           =float(GUI.txtLineSetInsult.GetValue())
-    Cycle.LineSetSupply.k_tube            =float(GUI.txtLineSetTubek.GetValue())
-    Cycle.LineSetSupply.k_insul           =float(GUI.txtLineSetInsulk.GetValue())
-    Cycle.LineSetSupply.h_air             =float(GUI.txtLineSeth_air.GetValue())
-    Cycle.LineSetSupply.T_air             =float(GUI.txtLineSetT_air.GetValue())
+    Cycle.LineSetLiquid.L                 =float(GUI.txtLineSetL.GetValue())
+    Cycle.LineSetLiquid.OD                =float(GUI.txtLineSetOD_supply.GetValue())
+    Cycle.LineSetLiquid.ID                =float(GUI.txtLineSetID_supply.GetValue())
+    Cycle.LineSetLiquid.t_insul           =float(GUI.txtLineSetInsult.GetValue())
+    Cycle.LineSetLiquid.k_tube            =float(GUI.txtLineSetTubek.GetValue())
+    Cycle.LineSetLiquid.k_insul           =float(GUI.txtLineSetInsulk.GetValue())
+    Cycle.LineSetLiquid.h_air             =float(GUI.txtLineSeth_air.GetValue())
+    Cycle.LineSetLiquid.T_air             =float(GUI.txtLineSetT_air.GetValue())
     
-    Cycle.LineSetReturn.L                 =float(GUI.txtLineSetL.GetValue())
-    Cycle.LineSetReturn.OD                =float(GUI.txtLineSetOD_return.GetValue())
-    Cycle.LineSetReturn.ID                =float(GUI.txtLineSetID_return.GetValue())
-    Cycle.LineSetReturn.t_insul           =float(GUI.txtLineSetInsult.GetValue())
-    Cycle.LineSetReturn.k_tube            =float(GUI.txtLineSetTubek.GetValue())
-    Cycle.LineSetReturn.k_insul           =float(GUI.txtLineSetInsulk.GetValue())
-    Cycle.LineSetReturn.h_air             =float(GUI.txtLineSeth_air.GetValue())
-    Cycle.LineSetReturn.T_air             =float(GUI.txtLineSetT_air.GetValue())
+    Cycle.LineSetSuction.L                 =float(GUI.txtLineSetL.GetValue())
+    Cycle.LineSetSuction.OD                =float(GUI.txtLineSetOD_return.GetValue())
+    Cycle.LineSetSuction.ID                =float(GUI.txtLineSetID_return.GetValue())
+    Cycle.LineSetSuction.t_insul           =float(GUI.txtLineSetInsult.GetValue())
+    Cycle.LineSetSuction.k_tube            =float(GUI.txtLineSetTubek.GetValue())
+    Cycle.LineSetSuction.k_insul           =float(GUI.txtLineSetInsulk.GetValue())
+    Cycle.LineSetSuction.h_air             =float(GUI.txtLineSeth_air.GetValue())
+    Cycle.LineSetSuction.T_air             =float(GUI.txtLineSetT_air.GetValue())
     
     Cycle.Charge_target=float(GUI.txtCycleCharge.GetValue())
     Cycle.DT_sc_target=float(GUI.txtCycleSubcooling.GetValue())
@@ -251,21 +253,21 @@ def CycleOutputs2GUI(GUI,Cycle):
         GUI.txtEvaporatorDP_r_subcool.SetValue("N/A" )
         
     
-    GUI.txtLineSetSupplyOutputsQ.SetValue("%0.3f" % (Cycle.LineSetSupply.Q ))
-    GUI.txtLineSetSupplyOutputsDP.SetValue("%0.3f" % (Cycle.LineSetSupply.DP ))
-    GUI.txtLineSetSupplyOutputsRe.SetValue("%0.3f" % (Cycle.LineSetSupply.Re_fluid ))
-    GUI.txtLineSetSupplyOutputsh.SetValue("%0.3f" % (Cycle.LineSetSupply.h_fluid ))
-    GUI.txtLineSetSupplyOutputsCharge.SetValue("%0.3f" % (Cycle.LineSetSupply.Charge ))
-    GUI.txtLineSetSupplyOutputsTin.SetValue("%0.2f / %0.2f" % (Cycle.LineSetSupply.Tin,Cycle.LineSetSupply.Tin-273.15 ))
-    GUI.txtLineSetSupplyOutputsTout.SetValue("%0.2f / %0.2f" % (Cycle.LineSetSupply.Tout,Cycle.LineSetSupply.Tout-273.15 ))
+    GUI.txtLineSetSupplyOutputsQ.SetValue("%0.3f" % (Cycle.LineSetLiquid.Q ))
+    GUI.txtLineSetSupplyOutputsDP.SetValue("%0.3f" % (Cycle.LineSetLiquid.DP ))
+    GUI.txtLineSetSupplyOutputsRe.SetValue("%0.3f" % (Cycle.LineSetLiquid.Re_fluid ))
+    GUI.txtLineSetSupplyOutputsh.SetValue("%0.3f" % (Cycle.LineSetLiquid.h_fluid ))
+    GUI.txtLineSetSupplyOutputsCharge.SetValue("%0.3f" % (Cycle.LineSetLiquid.Charge ))
+    GUI.txtLineSetSupplyOutputsTin.SetValue("%0.2f / %0.2f" % (Cycle.LineSetLiquid.Tin,Cycle.LineSetLiquid.Tin-273.15 ))
+    GUI.txtLineSetSupplyOutputsTout.SetValue("%0.2f / %0.2f" % (Cycle.LineSetLiquid.Tout,Cycle.LineSetLiquid.Tout-273.15 ))
     
-    GUI.txtLineSetReturnOutputsQ.SetValue("%0.3f" % (Cycle.LineSetReturn.Q ))
-    GUI.txtLineSetReturnOutputsDP.SetValue("%0.3f" % (Cycle.LineSetReturn.DP ))
-    GUI.txtLineSetReturnOutputsRe.SetValue("%0.3f" % (Cycle.LineSetReturn.Re_fluid ))
-    GUI.txtLineSetReturnOutputsh.SetValue("%0.3f" % (Cycle.LineSetReturn.h_fluid ))
-    GUI.txtLineSetReturnOutputsCharge.SetValue("%0.3f" % (Cycle.LineSetReturn.Charge ))
-    GUI.txtLineSetReturnOutputsTin.SetValue("%0.2f / %0.2f" % (Cycle.LineSetReturn.Tin,Cycle.LineSetReturn.Tin-273.15 ))
-    GUI.txtLineSetReturnOutputsTout.SetValue("%0.2f / %0.2f" % (Cycle.LineSetReturn.Tout,Cycle.LineSetReturn.Tout-273.15 ))
+    GUI.txtLineSetReturnOutputsQ.SetValue("%0.3f" % (Cycle.LineSetSuction.Q ))
+    GUI.txtLineSetReturnOutputsDP.SetValue("%0.3f" % (Cycle.LineSetSuction.DP ))
+    GUI.txtLineSetReturnOutputsRe.SetValue("%0.3f" % (Cycle.LineSetSuction.Re_fluid ))
+    GUI.txtLineSetReturnOutputsh.SetValue("%0.3f" % (Cycle.LineSetSuction.h_fluid ))
+    GUI.txtLineSetReturnOutputsCharge.SetValue("%0.3f" % (Cycle.LineSetSuction.Charge ))
+    GUI.txtLineSetReturnOutputsTin.SetValue("%0.2f / %0.2f" % (Cycle.LineSetSuction.Tin,Cycle.LineSetSuction.Tin-273.15 ))
+    GUI.txtLineSetReturnOutputsTout.SetValue("%0.2f / %0.2f" % (Cycle.LineSetSuction.Tout,Cycle.LineSetSuction.Tout-273.15 ))
         
     if Cycle.CycleType=='DX':
         GUI.txtCycleSHR.SetValue("%0.4f" % (Cycle.Evaporator.SHR ))

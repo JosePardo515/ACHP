@@ -264,7 +264,7 @@ class PlotCycleOutputsPanel(wx.Panel):
             
         (xCompressor,yCompressor)=self.circle(xComp,yComp,rComp,50)
         self.axes.plot(xCompressor,yCompressor,'k',lw=2)
-        label='Q: %0.2f W\nP: %0.2f W' %(-Cycle.Compressor.W*Cycle.Compressor.fp,Cycle.Compressor.W)
+        label='Q: %0.2f W\nP: %0.2f W' %(-Cycle.Compressor.Q_amb,Cycle.Compressor.W)
         self.axes.text(xComp,yComp+rComp+0.1,label,ha='center',va='bottom',size=10)
         self.axes.text(xComp,yComp-rComp-0.1,'Comp',ha='center',va='top',size=10)
         

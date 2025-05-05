@@ -19,7 +19,7 @@ class Example(wx.Frame):
     
     def OnKeyDown(self, event):
         keycode = event.GetKeyCode()
-        print keycode
+        print(keycode)
 #            if keycode == wx.WXK_ESCAPE:
 #                ret  = wx.MessageBox('Are you sure to quit?', 'Question', 
 #            wx.YES_NO | wx.NO_DEFAULT, self)

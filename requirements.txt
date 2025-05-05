@@ -26,6 +26,7 @@ parso
 pillow                        
 prompt_toolkit                
 pure_eval                     
+py2exe
 Pygments                      
 pyparsing                     
 python-dateutil               
@@ -39,3 +40,4 @@ stack-data
 traitlets                     
 urllib3                       
 wcwidth                       
+wxPython

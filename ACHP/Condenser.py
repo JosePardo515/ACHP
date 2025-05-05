@@ -14,6 +14,8 @@ class CondenserClass():
     def __init__(self,**kwargs):
         #Load the parameters passed in
         # using the dictionary
+        self.Fins = FinInputs()
+        self.FinsType = 'PlainFins'  # Inicializa FinsType con un valor predeterminado
         self.__dict__.update(kwargs)      
     
     def OutputList(self):
@@ -245,6 +247,9 @@ class CondenserClass():
         elif self.FinsType == 'HerringboneFins':
             HerringboneFins(self.Fins)
         elif self.FinsType == 'PlainFins':
+            PlainFins(self.Fins)
+        elif self.FinsType == None: 
+            self.FinsType == 'PlainFins'
             PlainFins(self.Fins)
             
         self.mdot_da=self.Fins.mdot_da

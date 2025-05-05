@@ -1,9 +1,9 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import HAPropsSI 
 from scipy.optimize import fsolve, minimize
-from Correlations import ShahEvaporation_Average,f_h_1phase_Tube
+from ACHP.Correlations import ShahEvaporation_Average,f_h_1phase_Tube
 from math import pi
-from Solvers import MultiDimNewtRaph
+from ACHP.Solvers import MultiDimNewtRaph
 import numpy as np
 import CoolProp as CP
 

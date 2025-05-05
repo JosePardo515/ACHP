@@ -17,7 +17,8 @@ def IsFinsClass(Fins):
 class FinsVals:
     pass    
 class TubesVals:
-    pass
+    def __init__(self):
+            self.kw = 237  # Valor predeterminado para la conductividad térmica
 class AirVals:
     pass
         

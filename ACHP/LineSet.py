@@ -320,16 +320,16 @@ if __name__=='__main__':
             }
     
 
-    LineSetSupply = LineSetOptionClass(**kwargs)
-    LineSetSupply.OD=0.009525
-    LineSetSupply.ID=0.007986
-    LineSetSupply.Calculate()
+    LineSetLiquid = LineSetOptionClass(**kwargs)
+    LineSetLiquid.OD=0.009525
+    LineSetLiquid.ID=0.007986
+    LineSetLiquid.Calculate()
     
 
-    LineSetReturn = LineSetOptionClass(**kwargs)
-    LineSetReturn.OD=0.01905
-    LineSetReturn.ID=0.017526
-    LineSetReturn.Calculate()    
+    LineSetSuction = LineSetOptionClass(**kwargs)
+    LineSetSuction.OD=0.01905
+    LineSetSuction.ID=0.017526
+    LineSetSuction.Calculate()    
 
-    print (LineSetSupply.OutputList())
-    print (LineSetReturn.OutputList())
+    print (LineSetLiquid.OutputList())
+    print (LineSetSuction.OutputList())

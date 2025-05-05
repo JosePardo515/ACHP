@@ -153,7 +153,7 @@ def rho_oil(Liq,T):
         rho_L = 1.18631056e+03 -7.31369048e-01*T  #T [K]
     else:
         print ("Invalid fluid")
-
+        rho_L = 0
     return rho_L
 
 

@@ -271,7 +271,7 @@ class ACHPMainFrame(wx.Frame):
             if (dlg.ShowModal() == wx.ID_OK):
                 fileName = dlg.GetFilename()
                 dirName = dlg.GetDirectory()
-                print fileName,dirName
+                print (fileName,dirName)
             
                 A=np.loadtxt(dirName + os.sep + fileName,delimiter=',')
                 
@@ -429,7 +429,7 @@ class ACHPMainFrame(wx.Frame):
             
         f.close()
         if len(notFound)>0:
-            print 'These GUI items were not loaded: ',notFound
+            print ('These GUI items were not loaded: ',notFound)
         if len(notFound)>0:
             nfString=",".join(["%s" % k for k in notFound])
             dlg = wx.MessageDialog(self,nfString+" not found")
@@ -450,7 +450,7 @@ class ACHPMainFrame(wx.Frame):
         
     def ShowCoolingCoilCircuits(self, event): 
         Circuits = CircuitsClass(self, -1, "")
-        print float(self.txtCoolingCoilTubesNcircuit.GetValue())
+        print(float(self.txtCoolingCoilTubesNcircuit.GetValue()))
         kwargs={'Ncircuits' : float(self.txtCoolingCoilTubesNcircuit.GetValue()),
                 'pl' : float(self.txtCoolingCoilTubesPl.GetValue()),
                 'pt' : float(self.txtCoolingCoilTubesPt.GetValue()),
@@ -463,7 +463,7 @@ class ACHPMainFrame(wx.Frame):
         
     def ShowCondenserCircuits(self, event): 
         Circuits = CircuitsClass(self, -1, "")
-        print float(self.txtCoolingCoilTubesNcircuit.GetValue())
+        print(float(self.txtCoolingCoilTubesNcircuit.GetValue()))
         kwargs={'Ncircuits' : float(self.txtCondenserTubesNcircuit.GetValue()),
                 'pl' : float(self.txtCondenserTubesPl.GetValue()),
                 'pt' : float(self.txtCondenserTubesPt.GetValue()),
@@ -605,7 +605,7 @@ class ACHPMainFrame(wx.Frame):
             self.txtLineSetInsulk.SetValue('0.027')
 
     def SelectParaPath(self, event): # wxGlade: MyFrame.<event_handler>
-        print "Event handler `SelectParaPath' not implemented"
+        print("Event handler `SelectParaPath' not implemented")
         event.Skip()
 
     def FileQuit(self, event): # wxGlade: MyFrame.<event_handler>

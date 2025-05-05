@@ -13,6 +13,7 @@ class ExpDevClass():
     def __init__(self,**kwargs):
         #Load the parameters passed in
         # using the dictionary
+        self.ExpType = 'Ideal'
         self.__dict__.update(kwargs)
         
     def Update(self,**kwargs):
