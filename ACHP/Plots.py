@@ -700,7 +700,6 @@ class PlotsClass():
 
         plt.show()
 
-    
     def PHEjector(self,Ejector,**kwargs):
   
         Ref=Ejector.Ref

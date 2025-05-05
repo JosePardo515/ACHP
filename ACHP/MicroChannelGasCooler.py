@@ -1,10 +1,10 @@
 from __future__ import division, print_function, absolute_import
 from math import pi,log,exp
 from CoolProp.CoolProp import HAPropsSI
-from ACHP.Correlations import f_h_1phase_MicroTube, Petterson_supercritical_average
-from ACHP.MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
-from ACHP.DryWetSegment import DWSVals, DryWetSegment
-from ACHP.ACHPTools import ValidateFields
+from Correlations import f_h_1phase_MicroTube, Petterson_supercritical_average
+from MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
+from DryWetSegment import DWSVals, DryWetSegment
+from ACHPTools import ValidateFields
 
 from scipy.optimize import brentq, fsolve
 import CoolProp as CP

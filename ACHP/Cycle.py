@@ -1,35 +1,33 @@
 from __future__ import division, print_function, absolute_import
 import sys
 
-from scipy.optimize import brentq, fsolve,newton 
 import numpy as np                  #NumPy is fundamental scientific package
 
 import CoolProp as CP
 
-from ACHP.convert_units import W2BTUh
-from ACHP.Compressor import CompressorClass  #Compressor
-from ACHP.Condenser import CondenserClass    #Condenser
-from ACHP.MicroChannelCondenser import MicroCondenserClass #MicroChannelCondenser
-from ACHP.Evaporator import EvaporatorClass  #Evaporator
-from ACHP.CoolingCoil import CoolingCoilClass #Cooling Coil
-from ACHP.MultiCircuitEvaporator import MultiCircuitEvaporatorClass
-from ACHP.CoaxialHX import CoaxialHXClass #Coaxial internal heat exchanger
-from ACHP.PHEHX import PHEHXClass #Plate-Heat-Exchanger 
-from ACHP.LineSet import LineSetClass, LineSetOptionClass #Line set class
-from ACHP.ExpDev import ExpDevClass
-from ACHP.Pump import PumpClass # Secondary loop pump class
-from ACHP.Correlations import TrhoPhase_ph            
-from ACHP.Solvers import MultiDimNewtRaph, Broyden, DE
-from ACHP.Preconditioners import DXPreconditioner,SecondaryLoopPreconditioner
-from ACHP.FinCorrelations import FinInputs     #fin correlations
-from ACHP.MicroFinCorrelations import MicroFinInputs #Micro-fin correlations
-from ACHP.GasCooler import GasCoolerClass #GasCooler
-from ACHP.MicroChannelGasCooler import MicroChannelGasCoolerClass #Micro-channel GasCooler
-from ACHP.MicroChannelEvaporator import MicroChannelEvaporatorClass #Micro-channel Evaporator
-from ACHP.System_Volumes import SightGlassFilterDrierMicroMotionClass, SightGlassFilterDrierMicroMotionOptionClass
-from ACHP.Compressor_VariableSpeed_HitachiRotary import HitachiVariableSpeedRotaryCompressorClass
-from ACHP.Receiver import SuctionAccumulatorClass
-
+from convert_units import W2BTUh
+from Compressor import CompressorClass  #Compressor
+from Condenser import CondenserClass    #Condenser
+from MicroChannelCondenser import MicroCondenserClass #MicroChannelCondenser
+from Evaporator import EvaporatorClass  #Evaporator
+from CoolingCoil import CoolingCoilClass #Cooling Coil
+from MultiCircuitEvaporator import MultiCircuitEvaporatorClass
+from CoaxialHX import CoaxialHXClass #Coaxial internal heat exchanger
+from PHEHX import PHEHXClass #Plate-Heat-Exchanger 
+from LineSet import LineSetClass, LineSetOptionClass #Line set class
+from ExpDev import ExpDevClass
+from Pump import PumpClass # Secondary loop pump class
+from Correlations import TrhoPhase_ph            
+from Solvers import MultiDimNewtRaph, Broyden, DE
+from Preconditioners import DXPreconditioner,SecondaryLoopPreconditioner
+from FinCorrelations import FinInputs     #fin correlations
+from MicroFinCorrelations import MicroFinInputs #Micro-fin correlations
+from GasCooler import GasCoolerClass #GasCooler
+from MicroChannelGasCooler import MicroChannelGasCoolerClass #Micro-channel GasCooler
+from MicroChannelEvaporator import MicroChannelEvaporatorClass #Micro-channel Evaporator
+from System_Volumes import SightGlassFilterDrierMicroMotionClass, SightGlassFilterDrierMicroMotionOptionClass
+from Compressor_VariableSpeed_HitachiRotary import HitachiVariableSpeedRotaryCompressorClass
+from Receiver import SuctionAccumulatorClass
 
 class SecondaryCycleClass():
     def __init__(self):
@@ -1797,5 +1795,3 @@ class VariableSpeedHPClass():
         print ('-------------------------------------')
         print ('     Simulation Completed            ')
         print ('-------------------------------------')
-
-            

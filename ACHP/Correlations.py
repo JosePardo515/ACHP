@@ -202,7 +202,7 @@ def LMPressureGradientAvg(x_min,x_max,AS,G,D,Tbubble,Tdew,C=None,satTransport=No
         dpdz,alpha=LockhartMartinelli(AS,G,D,x,Tbubble,Tdew,C,satTransport)
         return dpdz
     
-    ## Use Simpson's Rule to calculate the average pressure gradient
+    ## Use Simpsonsimpsonon's Rule to calculate the average pressure gradient
     ## Can't use adapative quadrature since function is not sufficiently smooth
     ## Not clear why not sufficiently smooth at x>0.9
     if x_min==x_max:
@@ -1265,7 +1265,7 @@ def KM_Cond_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,C=None,satTransport=
         dpdz, h = Kim_Mudawar_condensing_DPDZ_h(AS,G,Dh,x,Tbubble,Tdew,p,beta,C,satTransport)
         return dpdz , h
     
-    ## Use Simpson's Rule to calculate the average pressure gradient
+    ## Use Simpsonsimpsonon's Rule to calculate the average pressure gradient
     ## Can't use adapative quadrature since function is not sufficiently smooth
     ## Not clear why not sufficiently smooth at x>0.9
     if x_min==x_max:
@@ -1290,7 +1290,7 @@ def KM_Cond_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,C=None,satTransport=
             DP[i]=KMFunc(xx[i])[0]
             h[i]=KMFunc(xx[i])[1]
         
-        #Use Simpson's rule to carry out numerical integration to get average DP and average h
+        #Use Simpsonsimpsonon's rule to carry out numerical integration to get average DP and average h
         if abs(x_max-x_min)<5*machine_eps:
             #return just one of the edge values
             return -DP[0], h[0]
@@ -1458,7 +1458,7 @@ def KM_Evap_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,q_fluxH,PH_PF=1,C=No
         dpdz, h = Kim_Mudawar_boiling_DPDZ_h(AS,G,Dh,x,Tbubble,Tdew,p,beta,q_fluxH,PH_PF,C,satTransport)
         return dpdz , h
     
-    ## Use Simpson's Rule to calculate the average pressure gradient
+    ## Use Simpsonsimpsonon's Rule to calculate the average pressure gradient
     ## Can't use adapative quadrature since function is not sufficiently smooth
     ## Not clear why not sufficiently smooth at x>0.9
     if x_min==x_max:
@@ -1486,7 +1486,7 @@ def KM_Evap_Average(x_min,x_max,AS,G,Dh,Tbubble,Tdew,p,beta,q_fluxH,PH_PF=1,C=No
             DP[i]=KMFunc(xx[i])[0]
             h[i]=KMFunc(xx[i])[1]
         
-        #Use Simpson's rule to carry out numerical integration to get average DP and average h
+        #Use Simpsonsimpsonon's rule to carry out numerical integration to get average DP and average h
         if abs(x_max-x_min)<5*machine_eps:
             #return just one of the edge values
             return -DP[0], h[0]

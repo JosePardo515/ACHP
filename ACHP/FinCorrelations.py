@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import HAPropsSI
 from math import sqrt,pi,tanh,exp,cos,log
-from ACHP.ACHPTools import ValidateFields
+from ACHPTools import ValidateFields
 
 def IsFinsClass(Fins):
     '''

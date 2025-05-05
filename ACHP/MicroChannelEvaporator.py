@@ -6,10 +6,10 @@ import numpy as np
 
 import CoolProp as CP
 
-from ACHP.Correlations import f_h_1phase_MicroTube,ShahEvaporation_Average,LMPressureGradientAvg,AccelPressureDrop,TwoPhaseDensity,Bertsch_MC_Average,KM_Evap_Average,KandlikarEvaporation_average
-from ACHP.MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
-from ACHP.DryWetSegment import DWSVals, DryWetSegment
-from ACHP.ACHPTools import ValidateFields
+from Correlations import f_h_1phase_MicroTube,ShahEvaporation_Average,LMPressureGradientAvg,AccelPressureDrop,TwoPhaseDensity,Bertsch_MC_Average,KM_Evap_Average,KandlikarEvaporation_average
+from MicroFinCorrelations import MultiLouveredMicroFins, MicroFinInputs, IsFinsClass
+from DryWetSegment import DWSVals, DryWetSegment
+from ACHPTools import ValidateFields
 
 
 class MicroChannelEvaporatorClass():

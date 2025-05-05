@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 from math import log,exp
 from CoolProp.CoolProp import HAPropsSI, cair_sat
-from ACHP.FinCorrelations import WavyLouveredFins, HerringboneFins, PlainFins
-from ACHP.MicroFinCorrelations import MultiLouveredMicroFins
+from FinCorrelations import WavyLouveredFins, HerringboneFins, PlainFins
+from MicroFinCorrelations import MultiLouveredMicroFins
 
 class DWSVals():
     """ 

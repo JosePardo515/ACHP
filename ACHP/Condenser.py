@@ -1,9 +1,9 @@
 from __future__ import division, print_function, absolute_import
 from math import pi,log,exp
-from ACHP.Correlations import f_h_1phase_Tube,ShahCondensation_Average,LMPressureGradientAvg,TwoPhaseDensity,AccelPressureDrop 
-from ACHP.FinCorrelations import WavyLouveredFins,FinInputs,IsFinsClass, HerringboneFins, PlainFins
+from Correlations import f_h_1phase_Tube,ShahCondensation_Average,LMPressureGradientAvg,TwoPhaseDensity,AccelPressureDrop 
+from FinCorrelations import WavyLouveredFins,FinInputs,IsFinsClass, HerringboneFins, PlainFins
 from scipy.optimize import brentq
-from ACHP.ACHPTools import ValidateFields
+from ACHPTools import ValidateFields
 import CoolProp as CP
 
 class FinVals():

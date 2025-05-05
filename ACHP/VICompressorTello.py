@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import PropsSI
 import CoolProp as CP
-from ACHP.convert_units import *
-from ACHP.OilPropLib import *
+from convert_units import *
+from OilPropLib import *
 
 class VICompressorTelloClass():
     """

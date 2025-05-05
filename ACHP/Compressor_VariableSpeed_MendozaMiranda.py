@@ -1,7 +1,7 @@
 from __future__ import division, print_function, absolute_import
 from math import fabs
 from CoolProp.CoolProp import PropsSI
-from ACHP.OilPropLib import *
+from OilPropLib import *
 import CoolProp as CP
 
 class VariableSpeedCompressorClass():

@@ -1,6 +1,6 @@
 from __future__ import division, print_function, absolute_import
 from CoolProp.CoolProp import PropsSI
-from ACHP.OilPropLib import *
+from OilPropLib import *
 import CoolProp as CP
 
 class CompressorClass():
@@ -48,7 +48,6 @@ class CompressorClass():
                 
                 [2] The value itself
         """
-        
         return [ 
             ('M1','-',self.M[0]),
             ('M2','-',self.M[1]),
@@ -174,8 +173,7 @@ class CompressorClass():
         
         # Amount of refrigerant dissolved in the oil sump
         self.Charge = self.m_oil*self.x_Ref/(1-self.x_Ref)
-        
-        
+ 
 if __name__=='__main__':
     #Abstract State        
     Ref = 'R134a'

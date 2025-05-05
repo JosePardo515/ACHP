@@ -6,10 +6,10 @@ import numpy as np
 
 import CoolProp as CP
 
-from ACHP.Correlations import f_h_1phase_Tube,ShahEvaporation_Average,LMPressureGradientAvg,AccelPressureDrop,TwoPhaseDensity,KandlikarEvaporation_average
-from ACHP.FinCorrelations import WavyLouveredFins,FinInputs,IsFinsClass, HerringboneFins, PlainFins
-from ACHP.DryWetSegment import DWSVals, DryWetSegment
-from ACHP.ACHPTools import ValidateFields
+from Correlations import f_h_1phase_Tube,ShahEvaporation_Average,LMPressureGradientAvg,AccelPressureDrop,TwoPhaseDensity,KandlikarEvaporation_average
+from FinCorrelations import WavyLouveredFins,FinInputs,IsFinsClass, HerringboneFins, PlainFins
+from DryWetSegment import DWSVals, DryWetSegment
+from ACHPTools import ValidateFields
 
 class EvaporatorClass():
     def __init__(self,**kwargs):
@@ -290,9 +290,7 @@ class EvaporatorClass():
         xv=np.linspace(0,1,int(Nbends))
         
         self.Tbends=interp1d(x,Tv)(xv)
-        
-        
-        
+
     def _TwoPhase_Forward(self,w_2phase):
     
         DWS=DWSVals() #DryWetSegment structure

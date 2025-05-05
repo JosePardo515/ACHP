@@ -177,7 +177,6 @@ def print_dict(dict_inp):
             print (" > "+keyword+" < ",end='')
         print ("<<<")
 
-
 def ValidateFields(d,reqFields,optFields=None):
         '''
         The function checkFields takes in inputs of:
@@ -250,13 +249,11 @@ def get_svn_revision(path=None):
         return u'SVN-%s' % rev
     return u'SVN-unknown'
 
-
 def subsample(data, sample_size):
     #subsample data
     sample_size=int(sample_size)
     samples = list(zip(*[iter(data)]*sample_size))   # use 3 for triplets, etc.
     return map(lambda x:sum(x)/float(len(x)), samples)
-
 
 def smooth_curve(curve_data,N_smooth,exp_max=-1,shift_0=0,fix_first_nonzero=False,plotit=False,t='x for plot'):
     """
