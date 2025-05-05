@@ -53,8 +53,6 @@ class MPLPanel(wx.Panel):
         s_comp=np.r_[Cycle.Compressor.sin_r/1000.,Cycle.Compressor.sout_r/1000.]
         T_comp=np.r_[Cycle.Compressor.Tin_r,Cycle.Compressor.Tout_r]
 
-        print(s_comp,T_comp)
-
         self.axes.plot(s_comp,T_comp,'b')
         self.axes.plot(s_comp[0],T_comp[0],'bo')
         self.axes.plot(s_comp[1],T_comp[1],'bo')
@@ -70,7 +68,6 @@ class MPLPanel(wx.Panel):
             self.axes.plot(s_cond,T_cond,'b')
             self.axes.plot(s_cond[3],T_cond[3],'bo')
             self.axes.text(s_cond[3],T_cond[3],r'3$\quad\quad$',ha='right',va='bottom')
-            
             self.axes.plot([s_cond[3],s_cond[0]],[Cycle.Condenser.Tin_a,Cycle.Condenser.Tout_a],'r')
             self.axes.text(0.5*s_cond[0]+0.5*s_cond[3],Cycle.Condenser.Tin_a,'Outdoor Air',backgroundcolor='w',ha='center',va='center')
         elif Cycle.CycleType=='Secondary' and Cycle.Mode=='HP':
@@ -80,7 +77,6 @@ class MPLPanel(wx.Panel):
             self.axes.plot(s_evap,T_evap,'b')
             self.axes.plot(s_evap[0],T_evap[0],'bo')
             self.axes.text(s_evap[0],T_evap[0],r'4$\quad\quad$',ha='right',va='bottom')
-            
             self.axes.plot([s_evap[2],s_evap[0]],[Cycle.Evaporator.Tin_a,Cycle.Evaporator.Tout_a],'r')
             self.axes.text(0.5*s_evap[0]+0.5*s_evap[2],Cycle.Evaporator.Tin_a,'Outdoor Air',backgroundcolor='w',ha='center',va='center')
                 
@@ -122,8 +118,6 @@ class MPLPanel(wx.Panel):
                 raise ValueError('Secondary loop system must have a coaxial or PHE heat exchanger')
         
             self.axes.plot(s_IHX,T_IHX,'b')
-            
-            
             self.axes.plot(s_XV,T_XV,'b')            
             self.axes.plot([s_IHX[2],s_IHX[0]],[Cycle.CoolingCoil.Tin_a,Cycle.CoolingCoil.Tout_a],'r')
             self.axes.text(0.5*s_IHX[2]+0.5*s_IHX[0],Cycle.CoolingCoil.Tin_a,'Indoor Air',backgroundcolor='w',ha='center',va='center')
@@ -136,8 +130,6 @@ class MPLPanel(wx.Panel):
             s_evap=np.r_[Cycle.Evaporator.sin_r/1000.,sV/1000.,Cycle.Evaporator.sout_r/1000.]
             T_evap=np.r_[Cycle.Evaporator.Tsat_r, Cycle.Tdew_evap,Cycle.Evaporator.Tout_r]
 
-            print(s_evap,T_evap)
-
             self.axes.plot(s_evap,T_evap,'b')
             self.axes.plot(s_evap[0],T_evap[0],'bo')
             self.axes.text(s_evap[0],T_evap[0],r'4$\quad\quad$',ha='right',va='top')
@@ -145,13 +137,15 @@ class MPLPanel(wx.Panel):
             s_XV=np.r_[Cycle.Evaporator.sin_r/1000.,Cycle.Condenser.sout_r/1000.]
             T_XV=np.r_[Cycle.Evaporator.Tsat_r,Cycle.Condenser.Tout_r]
 
-            print(s_XV,T_XV)
-
             self.axes.plot(s_XV,T_XV,'b')
-            
             self.axes.plot([s_evap[2],s_evap[0]],[Cycle.Evaporator.Tin_a,Cycle.Evaporator.Tout_a],'r')
             self.axes.text(0.5*s_evap[2]+0.5*s_evap[0],Cycle.Evaporator.Tin_a,'Indoor Air',backgroundcolor='w',ha='center',va='center')
-        
+
+        print(s_comp,T_comp)
+        print(s_cond,T_cond)
+        print(s_evap,T_evap)
+        print(s_XV,T_XV)
+
     def PHOverlay(self,Cycle,**kwargs):
         Tmin=kwargs.get('Tmin',220.)
         Tmax=kwargs.get('Tmax',400.)    
@@ -170,8 +164,8 @@ class MPLPanel(wx.Panel):
             hsatL[i] = PropsSI('H','T',Tsat[i],'Q',0,Ref)
             hsatV[i] = PropsSI('H','T',Tsat[i],'Q',1,Ref)
     
-        self.axes.plot(hsatL,psatL,'k')
-        self.axes.plot(hsatV,psatV,'k')
+        self.axes.plot(hsatL/1000,psatL,'k')
+        self.axes.plot(hsatV/1000,psatV,'k')
         
         self.axes.set_xlabel('Enthalpy [kJ/kg]')
         self.axes.set_ylabel('Pressure [kPa]')
@@ -239,7 +233,10 @@ class MPLPanel(wx.Panel):
             p_XV=np.r_[Cycle.Evaporator.psat_r,Cycle.Condenser.psat_r]
             self.axes.plot(h_XV,p_XV,'b')
         
-        
+        print(h_comp,p_comp)
+        print(h_cond,p_cond)
+        print(h_evap,p_evap)
+        print(h_XV,p_XV)        
 
 # end of class MPLPanel
 
