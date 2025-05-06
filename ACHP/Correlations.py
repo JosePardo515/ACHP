@@ -1030,12 +1030,12 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
         Pr_tube=cp_tube*eta_tube/k_tube
         
         eta_tube_w=eta_tube #TODO: allow for temperature dependence?
-        w_tube=mdot_tube/rho_tube/Ac_tubes
+        w_tube=mdot_tube/rho_tube/AS_tube.Ac_tubes
         ReD_tube=rho_tube*w_tube*di/eta_tube
         
         
         if ReD_tube < 2300: # Laminar flow
-            NuD_tube = 1.86*(di*ReD_tube*Pr_tube/Lt)**(1/3)*(mu_tube/mu_tube_w)**0.14 # Eq. 5.145
+            NuD_tube = 1.86*(di*ReD_tube*Pr_tube/Lt)**(1/3)*(AS_tube.mu_tube/AS_tube.mu_tube_w)**0.14 # Eq. 5.145
             
             if NuD_tube < 3.66:
                 NuD_tube = 3.66
@@ -1050,7 +1050,7 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
         
         
         #Heat transfer coefficient tube side (Eq. 5.145)
-        h_tube = NuD_tube*k_f/di
+        h_tube = NuD_tube*AS_tube.k_f/di
         
         # Shell side
         #Single phase Fluid properties shell
@@ -1065,19 +1065,19 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
         eta_shell_w=eta_tube #TODO: allow for temperature dependence?
         w_shell=mdot_shell/rho_shell/Ac_shell
 
-        ReD_shell = mdot_shell*De/(Ac_shell*mu)
+        ReD_shell = mdot_shell*De/(Ac_shell*AS_tube.mu)
         
         #TODO: check Sarkar 2011 Eq. 5 includes additional factors
         if ReD_shell > 2300 and ReD_shell < 1e6:
-            Nu_shell = 0.36*ReD_shell**0.55*Pr_shell**(1/3)*(mu_shell/mu_shell_w)**0.14 # Eq. 5.151
+            Nu_shell = 0.36*ReD_shell**0.55*Pr_shell**(1/3)*(AS_tube.mu_shell/AS_tube.mu_shell_w)**0.14 # Eq. 5.151
         
-            f = exp(0.576 - 0.19*log(Re_s))
+            f = exp(0.576 - 0.19*log(AS_tube.Re_s))
             
         else:
             raise
         
         #Heat transfer coefficient shell side (Eq. 5.151)
-        h_shell = Nu_shell*kf/De
+        h_shell = Nu_shell*AS_tube.kf/De
         
         # Pressure drop tube side (Eq. 5.158)
         DELTAP_tube = 4*(f*Lt/di + 1)*Np*rho_tube/2*w_tube**2
@@ -1089,7 +1089,7 @@ def ShellTube_1phase_hdP(Inputs,JustGeo=False):
         # There are quite a lot of things that might be useful to have access to
         # in outer functions, so pack up parameters into a dictionary
         Outputs={
-             'De':dh,                       #Equivalent diamter [m]
+             'De':AS_tube.dh,               #Equivalent diamter [m]
              'h_tube':h_tube,               #Heat transfer coeffcient tube side [W/m^2-K]
              'h_shell':h_tube,              #Heat transfer coeffcient shell side [W/m^2-K]
              'DELTAP_tube':DELTAP_tube,     #Pressure drop tube side [Pa]

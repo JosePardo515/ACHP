@@ -171,7 +171,7 @@ class ACHPMainFrame(wx.Frame):
         
         # Check if file already exists, don't do anything if the user doesn't
         # want to overwrite it
-        if os.path.exists(str(self.txtParaPath.GetValue)):
+        if os.path.exists(str(self.txtParaPath.GetValue())):
             dlg = wx.MessageDialog(self, "Parametric Ouput File exists. Append?", "Overwrite confirmation", wx.YES_NO|wx.NO_DEFAULT|wx.ICON_QUESTION)
             if not (dlg.ShowModal() == wx.ID_YES):
                 return
